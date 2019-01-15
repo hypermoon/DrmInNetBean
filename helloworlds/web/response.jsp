@@ -155,8 +155,7 @@
          <br/>
          <%=items[2] %>
          <br/>
-         <%=items[3] %>
-         <br/>
+  
             
          <%=itemstimes[0] %>
          <br/>
