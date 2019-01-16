@@ -156,7 +156,7 @@
          <%=items[2] %>
          <br/>
   
-            
+         <hr/>   
          <%=itemstimes[0] %>
          <br/>
          <%=itemstimes[1] %>
