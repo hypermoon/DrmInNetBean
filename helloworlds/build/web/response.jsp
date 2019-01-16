@@ -29,7 +29,7 @@
 
     <body>
         <%
-             String Dir ;
+                    String Dir ;
             int islinux = 0;
             if(System.getProperty("os.name").toLowerCase().indexOf("linux") >=0  )
             {
@@ -41,8 +41,8 @@
                     Dir ="D:\\";
             }
         
-        String FName ="drmdata1.txt";
-        String Con = "this is a drm analysis txt \r\n";
+                   String FName ="drmdata1.txt";
+                   String Con = "this is a drm analysis txt \r\n";
         %>
 
      <div id="container" style="min-width:400px;height:400px"></div>
@@ -102,21 +102,19 @@
                out.println("-----");
                out.println(strdata);
          %>
-         <%  if( validinput ==null || validinput.equals("") )  //empty string
-            {
-               strdata ="empty";
-            }
-        
+         <%   if( validinput ==null || validinput.equals("") )  //empty string
+             {
+                strdata ="empty";
+             }
         %>
         
-         <mywritefile:MyWriteTag dir="<%=Dir%>" fname="<%=FName%>" con="<%=strdata%>" />
+        <mywritefile:MyWriteTag dir="<%=Dir%>" fname="<%=FName%>" con="<%=strdata%>" />
         
         <jsp:setProperty name="mybean" property="daynum" />
          
          <h1>yeap,<jsp:getProperty name="mybean" property="daynum" /> !</h1> 
          <h1>oops,<%=mydd%> !</h1> 
 
-    
          <h1>oops2,<%   org.mypackage.hello.datatimes myob = new org.mypackage.hello.datatimes() ;
                         myob.setDaynum(17);
                         mydd = myob.getDaynum();
@@ -147,6 +145,7 @@
           <% String []itemstimes =(String[])request.getAttribute("resultnewtimes");  %>
         
          <%-- <c:out value="${items}" escapeXml="false" ></c:out>     --%>
+         <%-- 
          <%=items[0] %>
          <br/>
          <%=items[1] %>
@@ -161,38 +160,38 @@
          <br/>
          <%=itemstimes[2] %>
          <br/>
+         --%>
            
         
         <script>
             var yearsize =  "<%= items.length   %>";
             
-            var limaarr = new Array(yearsize);
-            var libaarr = new Array(yearsize);
-             var liwoarr = new Array(yearsize);
-              var lijunarr = new Array(yearsize);
+            var limaarr  = new Array(yearsize);
+            var libaarr  = new Array(yearsize);
+            var liwoarr  = new Array(yearsize);
+            var lijunarr = new Array(yearsize);
               
-               var lihaoarr = new Array(yearsize);
-               
-                var lilparr = new Array(yearsize);
-                 var litxarr = new Array(yearsize);
-                  var litsarr = new Array(yearsize);
-                   var limsarr = new Array(yearsize);
+            var lihaoarr = new Array(yearsize);
+            var lilparr  = new Array(yearsize);
+            var litxarr  = new Array(yearsize);
+            var litsarr  = new Array(yearsize);
+            var limsarr  = new Array(yearsize);
               
-            var yeararr =  new Array(yearsize);
+            var yeararr  = new Array(yearsize);
            
         </script>
         
         <% for(int i = 0 ;i <items.length; i++) { %>
              <script>
-                   limaarr[<%= i%>] = "<%= itemstimes[i].substring(0,1) %>";
-                   libaarr[<%= i%>] = "<%= itemstimes[i].substring(2,3) %>";
-                   liwoarr[<%= i%>] = "<%= itemstimes[i].substring(4,5) %>";
+                   limaarr[<%= i%>]  = "<%= itemstimes[i].substring(0,1) %>";
+                   libaarr[<%= i%>]  = "<%= itemstimes[i].substring(2,3) %>";
+                   liwoarr[<%= i%>]  = "<%= itemstimes[i].substring(4,5) %>";
                    lijunarr[<%= i%>] = "<%= itemstimes[i].substring(6,7) %>";
                    lihaoarr[<%= i%>] = "<%= itemstimes[i].substring(8,9) %>";
-                   lilparr[<%= i%>] = "<%= itemstimes[i].substring(10,11) %>";
-                   litxarr[<%= i%>] = "<%= itemstimes[i].substring(11,12) %>";
-                   litsarr[<%= i%>] = "<%= itemstimes[i].substring(13,14) %>";
-                   limsarr[<%= i%>] = "<%= itemstimes[i].substring(15,16) %>";
+                   lilparr[<%= i%>]  = "<%= itemstimes[i].substring(10,11) %>";
+                   litxarr[<%= i%>]  = "<%= itemstimes[i].substring(12,13) %>";
+                   litsarr[<%= i%>]  = "<%= itemstimes[i].substring(14,15) %>";
+                   limsarr[<%= i%>]  = "<%= itemstimes[i].substring(16,17) %>";
                    
                    yeararr[<%= i%>] = "<%= items[i]%>";
              </script>
