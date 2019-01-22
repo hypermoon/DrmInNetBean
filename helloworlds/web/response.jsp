@@ -48,9 +48,9 @@
      <div id="container" style="min-width:400px;height:400px"></div>
         
       <%! int mydd =321; String strdata; String validinput; int isvalid =1; %>
-      <jsp:useBean id="mybean" scope="session" class="org.mypackage.hello.datatimes" />
+      <jsp:useBean id="mybean" scope="request" class="org.mypackage.hello.datatimes" />
     
-        <jsp:setProperty name="mybean" property="strfoo" />
+      <jsp:setProperty name="mybean" property="strfoo"  param="strfoo"/>
         <h1> drm 1:<jsp:getProperty name="mybean" property="strfoo" /> !</h1>
      
          <button type="submit" id="subbutton" onClick= "gobacks()" >Goback</button>
@@ -67,6 +67,7 @@
         <jsp:setProperty name="mybean" property="drmpeople6" />
         <jsp:setProperty name="mybean" property="drmpeople7" />
         <jsp:setProperty name="mybean" property="drmpeople8" />
+        
 
         <%
                              validinput = mybean.getStrfoo();

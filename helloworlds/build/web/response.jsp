@@ -29,7 +29,7 @@
 
     <body>
         <%
-                    String Dir ;
+             String Dir ;
             int islinux = 0;
             if(System.getProperty("os.name").toLowerCase().indexOf("linux") >=0  )
             {
@@ -41,18 +41,19 @@
                     Dir ="D:\\";
             }
         
-                   String FName ="drmdata1.txt";
-                   String Con = "this is a drm analysis txt \r\n";
+        String FName ="drmdata1.txt";
+        String Con = "this is a drm analysis txt \r\n";
         %>
 
      <div id="container" style="min-width:400px;height:400px"></div>
         
       <%! int mydd =321; String strdata; String validinput; int isvalid =1; %>
-      <jsp:useBean id="mybean" scope="session" class="org.mypackage.hello.datatimes" />
+      <jsp:useBean id="mybean" scope="request" class="org.mypackage.hello.datatimes" />
     
-     <   <jsp:setProperty name="mybean" property="strfoo" />
+      <jsp:setProperty name="mybean" property="strfoo"  param="strfoo"/>
         <h1> drm 1:<jsp:getProperty name="mybean" property="strfoo" /> !</h1>
      
+         <button type="submit" id="subbutton" onClick= "gobacks()" >Goback</button>
         <jsp:setProperty name="mybean" property="drmpeople0" />
         <h1> drm 2:<jsp:getProperty name="mybean" property="drmpeople0" /> !</h1>
         
@@ -66,6 +67,7 @@
         <jsp:setProperty name="mybean" property="drmpeople6" />
         <jsp:setProperty name="mybean" property="drmpeople7" />
         <jsp:setProperty name="mybean" property="drmpeople8" />
+        
 
         <%
                              validinput = mybean.getStrfoo();
@@ -102,19 +104,21 @@
                out.println("-----");
                out.println(strdata);
          %>
-         <%   if( validinput ==null || validinput.equals("") )  //empty string
-             {
-                strdata ="empty";
-             }
+         <%  if( validinput ==null || validinput.equals("") )  //empty string
+            {
+               strdata ="empty";
+            }
+        
         %>
         
-        <mywritefile:MyWriteTag dir="<%=Dir%>" fname="<%=FName%>" con="<%=strdata%>" />
+         <mywritefile:MyWriteTag dir="<%=Dir%>" fname="<%=FName%>" con="<%=strdata%>" />
         
         <jsp:setProperty name="mybean" property="daynum" />
          
          <h1>yeap,<jsp:getProperty name="mybean" property="daynum" /> !</h1> 
          <h1>oops,<%=mydd%> !</h1> 
 
+    
          <h1>oops2,<%   org.mypackage.hello.datatimes myob = new org.mypackage.hello.datatimes() ;
                         myob.setDaynum(17);
                         mydd = myob.getDaynum();
@@ -166,32 +170,33 @@
         <script>
             var yearsize =  "<%= items.length   %>";
             
-            var limaarr  = new Array(yearsize);
-            var libaarr  = new Array(yearsize);
-            var liwoarr  = new Array(yearsize);
-            var lijunarr = new Array(yearsize);
+            var limaarr = new Array(yearsize);
+            var libaarr = new Array(yearsize);
+             var liwoarr = new Array(yearsize);
+              var lijunarr = new Array(yearsize);
               
-            var lihaoarr = new Array(yearsize);
-            var lilparr  = new Array(yearsize);
-            var litxarr  = new Array(yearsize);
-            var litsarr  = new Array(yearsize);
-            var limsarr  = new Array(yearsize);
+               var lihaoarr = new Array(yearsize);
+               
+                var lilparr = new Array(yearsize);
+                 var litxarr = new Array(yearsize);
+                  var litsarr = new Array(yearsize);
+                   var limsarr = new Array(yearsize);
               
-            var yeararr  = new Array(yearsize);
+            var yeararr =  new Array(yearsize);
            
         </script>
         
         <% for(int i = 0 ;i <items.length; i++) { %>
              <script>
-                   limaarr[<%= i%>]  = "<%= itemstimes[i].substring(0,1) %>";
-                   libaarr[<%= i%>]  = "<%= itemstimes[i].substring(2,3) %>";
-                   liwoarr[<%= i%>]  = "<%= itemstimes[i].substring(4,5) %>";
+                   limaarr[<%= i%>] = "<%= itemstimes[i].substring(0,1) %>";
+                   libaarr[<%= i%>] = "<%= itemstimes[i].substring(2,3) %>";
+                   liwoarr[<%= i%>] = "<%= itemstimes[i].substring(4,5) %>";
                    lijunarr[<%= i%>] = "<%= itemstimes[i].substring(6,7) %>";
                    lihaoarr[<%= i%>] = "<%= itemstimes[i].substring(8,9) %>";
-                   lilparr[<%= i%>]  = "<%= itemstimes[i].substring(10,11) %>";
-                   litxarr[<%= i%>]  = "<%= itemstimes[i].substring(12,13) %>";
-                   litsarr[<%= i%>]  = "<%= itemstimes[i].substring(14,15) %>";
-                   limsarr[<%= i%>]  = "<%= itemstimes[i].substring(16,17) %>";
+                   lilparr[<%= i%>] = "<%= itemstimes[i].substring(10,11) %>";
+                   litxarr[<%= i%>] = "<%= itemstimes[i].substring(12,13) %>";
+                   litsarr[<%= i%>] = "<%= itemstimes[i].substring(14,15) %>";
+                   limsarr[<%= i%>] = "<%= itemstimes[i].substring(16,17) %>";
                    
                    yeararr[<%= i%>] = "<%= items[i]%>";
              </script>
@@ -244,50 +249,82 @@
                 name: 'lima',
                 data: [parseInt(limaarr[0])*50, parseInt(limaarr[1])*50, parseInt(limaarr[2])*50, parseInt(limaarr[3])*50,
                        parseInt(limaarr[4])*50,parseInt(limaarr[5])*50, parseInt(limaarr[6])*50,  parseInt(limaarr[7])*50,
-                       parseInt(limaarr[8])*50, parseInt(limaarr[9])*50, parseInt(limaarr[10])*50,parseInt(limaarr[11])*50]
+                       parseInt(limaarr[8])*50, parseInt(limaarr[9])*50, parseInt(limaarr[10])*50,parseInt(limaarr[11])*50,
+                       parseInt(limaarr[12])*50, parseInt(limaarr[13])*50, parseInt(limaarr[14])*50,parseInt(limaarr[15])*50,
+                       parseInt(limaarr[16])*50, parseInt(limaarr[17])*50, parseInt(limaarr[18])*50,parseInt(limaarr[19])*50,
+                       parseInt(limaarr[20])*50, parseInt(limaarr[21])*50, parseInt(limaarr[22])*50,parseInt(limaarr[23])*50]
             }, {
                 name: 'liba',
                 data: [parseInt(libaarr[0])*50, parseInt(libaarr[1])*50, parseInt(libaarr[2])*50, parseInt(libaarr[3])*50,
                        parseInt(libaarr[4])*50,parseInt(libaarr[5])*50, parseInt(libaarr[6])*50,  parseInt(libaarr[7])*50,
-                       parseInt(libaarr[8])*50, parseInt(libaarr[9])*50, parseInt(libaarr[10])*50,parseInt(libaarr[11])*50]
+                       parseInt(libaarr[8])*50, parseInt(libaarr[9])*50, parseInt(libaarr[10])*50,parseInt(libaarr[11])*50,
+                       parseInt(libaarr[12])*50, parseInt(libaarr[13])*50, parseInt(libaarr[14])*50,parseInt(libaarr[15])*50,
+                       parseInt(libaarr[16])*50, parseInt(libaarr[17])*50, parseInt(libaarr[18])*50,parseInt(libaarr[19])*50,
+                       parseInt(libaarr[20])*50, parseInt(libaarr[21])*50, parseInt(libaarr[22])*50,parseInt(libaarr[23])*50]
             }, {
                 name: 'liwo',
                 data: [parseInt(liwoarr[0])*50, parseInt(liwoarr[1])*50, parseInt(liwoarr[2])*50, parseInt(liwoarr[3])*50,
                        parseInt(liwoarr[4])*50,parseInt(liwoarr[5])*50, parseInt(liwoarr[6])*50,  parseInt(liwoarr[7])*50,
-                       parseInt(liwoarr[8])*50, parseInt(liwoarr[9])*50, parseInt(liwoarr[10])*50,parseInt(liwoarr[11])*50]
+                       parseInt(liwoarr[8])*50, parseInt(liwoarr[9])*50, parseInt(liwoarr[10])*50,parseInt(liwoarr[11])*50,
+                       parseInt(liwoarr[12])*50, parseInt(liwoarr[13])*50, parseInt(liwoarr[14])*50,parseInt(liwoarr[15])*50,
+                       parseInt(liwoarr[16])*50, parseInt(liwoarr[17])*50, parseInt(liwoarr[18])*50,parseInt(liwoarr[19])*50,
+                       parseInt(liwoarr[20])*50, parseInt(liwoarr[21])*50, parseInt(liwoarr[22])*50,parseInt(liwoarr[23])*50]
             }, {
                  name: 'lijun',
                  data: [parseInt(lijunarr[0])*50, parseInt(lijunarr[1])*50, parseInt(lijunarr[2])*50, parseInt(lijunarr[3])*50,
                        parseInt(lijunarr[4])*50,parseInt(lijunarr[5])*50, parseInt(lijunarr[6])*50,  parseInt(lijunarr[7])*50,
-                       parseInt(lijunarr[8])*50, parseInt(lijunarr[9])*50, parseInt(lijunarr[10])*50,parseInt(lijunarr[11])*50]
+                       parseInt(lijunarr[8])*50, parseInt(lijunarr[9])*50, parseInt(lijunarr[10])*50,parseInt(lijunarr[11])*50,
+                     parseInt(lijunarr[12])*50, parseInt(lijunarr[13])*50, parseInt(lijunarr[14])*50,parseInt(lijunarr[15])*50,
+                     parseInt(lijunarr[16])*50, parseInt(lijunarr[17])*50, parseInt(lijunarr[18])*50,parseInt(lijunarr[19])*50,
+                     parseInt(lijunarr[20])*50, parseInt(lijunarr[21])*50, parseInt(lijunarr[22])*50,parseInt(lijunarr[23])*50]
             },{
                  name: 'lihao',
                  data: [parseInt(lihaoarr[0])*50, parseInt(lihaoarr[1])*50, parseInt(lihaoarr[2])*50, parseInt(lihaoarr[3])*50,
                        parseInt(lihaoarr[4])*50,parseInt(lihaoarr[5])*50, parseInt(lihaoarr[6])*50,  parseInt(lihaoarr[7])*50,
-                       parseInt(lihaoarr[8])*50, parseInt(lihaoarr[9])*50, parseInt(lihaoarr[10])*50,parseInt(lihaoarr[11])*50]
+                       parseInt(lihaoarr[8])*50, parseInt(lihaoarr[9])*50, parseInt(lihaoarr[10])*50,parseInt(lihaoarr[11])*50,
+                     parseInt(lihaoarr[12])*50, parseInt(lihaoarr[13])*50, parseInt(lihaoarr[14])*50,parseInt(lihaoarr[15])*50,
+                    parseInt(lihaoarr[16])*50, parseInt(lihaoarr[17])*50, parseInt(lihaoarr[18])*50,parseInt(lihaoarr[19])*50,
+                    parseInt(lihaoarr[20])*50, parseInt(lihaoarr[21])*50, parseInt(lihaoarr[22])*50,parseInt(lihaoarr[23])*50]
             },{
                  name: 'lilp',
                  data: [parseInt(lilparr[0])*50, parseInt(lilparr[1])*50, parseInt(lilparr[2])*50, parseInt(lilparr[3])*50,
                        parseInt(lilparr[4])*50,parseInt(lilparr[5])*50, parseInt(lilparr[6])*50,  parseInt(lilparr[7])*50,
-                       parseInt(lilparr[8])*50, parseInt(lilparr[9])*50, parseInt(lilparr[10])*50,parseInt(lilparr[11])*50]
+                       parseInt(lilparr[8])*50, parseInt(lilparr[9])*50, parseInt(lilparr[10])*50,parseInt(lilparr[11])*50,
+                       parseInt(lilparr[12])*50, parseInt(lilparr[13])*50, parseInt(lilparr[14])*50,parseInt(lilparr[15])*50,
+                       parseInt(lilparr[16])*50, parseInt(lilparr[17])*50, parseInt(lilparr[18])*50,parseInt(lilparr[19])*50,
+                       parseInt(lilparr[20])*50, parseInt(lilparr[21])*50, parseInt(lilparr[22])*50,parseInt(lilparr[23])*50]
             },{
                  name: 'litx',
                  data: [parseInt(litxarr[0])*50, parseInt(litxarr[1])*50, parseInt(litxarr[2])*50, parseInt(litxarr[3])*50,
                        parseInt(litxarr[4])*50,parseInt(litxarr[5])*50, parseInt(litxarr[6])*50,  parseInt(litxarr[7])*50,
-                       parseInt(litxarr[8])*50, parseInt(litxarr[9])*50, parseInt(litxarr[10])*50,parseInt(litxarr[11])*50]
+                       parseInt(litxarr[8])*50, parseInt(litxarr[9])*50, parseInt(litxarr[10])*50,parseInt(litxarr[11])*50,
+                       parseInt(litxarr[12])*50, parseInt(litxarr[13])*50, parseInt(litxarr[14])*50,parseInt(litxarr[15])*50,
+                       parseInt(litxarr[16])*50, parseInt(litxarr[17])*50, parseInt(litxarr[18])*50,parseInt(litxarr[19])*50,
+                       parseInt(litxarr[20])*50, parseInt(litxarr[21])*50, parseInt(litxarr[22])*50,parseInt(litxarr[23])*50]
             },{
                  name: 'lits',
                  data: [parseInt(litsarr[0])*50, parseInt(litsarr[1])*50, parseInt(litsarr[2])*50, parseInt(litsarr[3])*50,
                        parseInt(litsarr[4])*50,parseInt(litsarr[5])*50, parseInt(litsarr[6])*50,  parseInt(litsarr[7])*50,
-                       parseInt(litsarr[8])*50, parseInt(litsarr[9])*50, parseInt(litsarr[10])*50,parseInt(litsarr[11])*50]
+                       parseInt(litsarr[8])*50, parseInt(litsarr[9])*50, parseInt(litsarr[10])*50,parseInt(litsarr[11])*50,
+                       parseInt(litsarr[12])*50, parseInt(litsarr[13])*50, parseInt(litsarr[14])*50,parseInt(litsarr[15])*50,
+                       parseInt(litsarr[16])*50, parseInt(litsarr[17])*50, parseInt(litsarr[18])*50,parseInt(litsarr[19])*50,
+                       parseInt(litsarr[20])*50, parseInt(litsarr[21])*50, parseInt(litsarr[22])*50,parseInt(litsarr[23])*50]
             },{
                  name: 'lims',
                  data: [parseInt(limsarr[0])*50, parseInt(limsarr[1])*50, parseInt(limsarr[2])*50, parseInt(limsarr[3])*50,
                        parseInt(limsarr[4])*50,parseInt(limsarr[5])*50, parseInt(limsarr[6])*50,  parseInt(limsarr[7])*50,
-                       parseInt(limsarr[8])*50, parseInt(limsarr[9])*50, parseInt(limsarr[10])*50,parseInt(limsarr[11])*50]
+                       parseInt(limsarr[8])*50, parseInt(limsarr[9])*50, parseInt(limsarr[10])*50,parseInt(limsarr[11])*50,
+                       parseInt(limsarr[12])*50, parseInt(limsarr[13])*50, parseInt(limsarr[14])*50,parseInt(limsarr[15])*50,
+                       parseInt(limsarr[16])*50, parseInt(limsarr[17])*50, parseInt(limsarr[18])*50,parseInt(limsarr[19])*50,
+                       parseInt(limsarr[20])*50, parseInt(limsarr[21])*50, parseInt(limsarr[22])*50,parseInt(limsarr[23])*50]
             }
                  ]
         });
+                  function gobacks()
+                       {
+                         //alert("ahaa");
+                         window.location = "http://localhost:8080/helloworlds/index.jsp";
+                      }
         </script>
 
               
