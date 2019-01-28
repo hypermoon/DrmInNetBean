@@ -348,7 +348,9 @@
                   function gobacks()
                        {
                          //alert("ahaa");
-                         window.location = "http://localhost:8080/helloworlds/index.jsp";
+                         var hostname = window.location.host;
+                         hostname = "https://"+hostname;
+                         window.location = hostname+"/helloworlds/index.jsp";
                       }
         </script>
 
