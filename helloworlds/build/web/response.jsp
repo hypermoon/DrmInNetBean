@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="org.mypackage.hello.datatimes" %>
+<%@page import="java.io.*" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="mywritefile" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="myreadfile" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -43,6 +44,27 @@
         
         String FName ="drmdata1.txt";
         String Con = "this is a drm analysis txt \r\n";
+        %>
+       <%
+         String fpname; 
+         fpname = Dir + FName;
+         File f = new File(fpname);
+         boolean flag = false;
+         if(f.exists())
+        {
+          flag = f.delete();
+          if(flag)
+          {
+            out.println("success");
+          }
+         else
+          {
+             out.println("file cannot delete");
+          }
+         }
+          else
+             out.println("file not exists");
+   
         %>
 
      <div id="container" style="min-width:400px;height:400px"></div>
