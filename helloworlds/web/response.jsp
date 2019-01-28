@@ -55,18 +55,18 @@
           flag = f.delete();
           if(flag)
           {
-            alert("delted ok");
-            //out.println("success");
+            //alert("delted ok");
+            out.println("success");
           }
          else
           {
-            alert("can't del");
-            // out.println("file cannot delete");
+            //alert("can't del");
+             out.println("file cannot delete");
           }
          }
           else
-            alert("file not exists");
-            // out.println("file not exists");
+            //alert("file not exists");
+             out.println("file not exists");
    
         %>
 
