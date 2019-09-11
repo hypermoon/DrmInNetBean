@@ -16,17 +16,10 @@
         <title>JSP Page  </title>
     </head>
     <body>  
-        <%!
-            int drmpeople[] = {0,0,0,0,0,0,0,0,0};
-        %>
-        
-        <%
-        String Dir ="D:\\";
-        String FName ="drmdata1.txt";
-        String Con = "this is a drm analysis txt \r\n";
-        %>
+
         
            <script type="text/javascript">
+            //script to performace user action
             function handlerchangeday(e)
             {
                var subs = document.getElementById("sub");
@@ -45,17 +38,12 @@
                document.getElementById("lims").value = 0;
                   
             }
-            function deliverydata()
-            {
-                    //     var xmlhttp;
-                    //     xmlhttp = new XMLHttpRequest();
-                    //     xmlhttp.open("GET", "./index.jsp",true);
-                    //     xmlhttp.send();
-            }
+
             function givedata(e)
             {
-                   var times = document.getElementById("dadn").value;
+               //    var times = document.getElementById("dadn").value;
             }
+            
             
             function confirmma()
             {
@@ -108,27 +96,16 @@
 
    
         <h1>DRM Count!</h1>
-        <span>日期：</span><input type="date" id="cal" name="caldate"    onchange="handlerchangeday(event);"  max="2019-12-11" min="2010-01-01" style="width:331px"/>
-        <br><br>
-       
-        <button type="submit" id="subbutton" onClick="this.disabled = true;"    >Submit</button>
+        <span>日期：</span><input type="date" id="cal" name="caldate"    onchange="handlerchangeday(event);"  max="2029-12-11" min="2010-01-01" style="width:331px"/>
+        <br/>
+        <br/>
+        <button type="submit" id="subbutton" onClick="this.disabled = true;"    >Confirm_Date</button>
         
-         <!--   <button type="button" id="dev" onClick="deliverydata()"    >delivery</button> -->
          
-         <%
-            
-            if(true)
-            {
-                out.println("going to write file");
-                //      out.println("<br>" + "file folder" + Dir);
-                //      out.println("<br> file name:" + FName);
-            }
-            else
-            {
-                //     out.println("file wire fail!");
-            }
-            
-         %>
+         
+        <%!
+            int drmpeople[] = {0,0,0,0,0,0,0,0,0};
+        %>
 
          <br/>
          <hr/>
@@ -170,7 +147,7 @@
             <br/>
             Enter your gender:
             
-            <input type="text" name="daynum"  id ="dn" value="13" />
+            <input type="text" name="daynum"  id ="dn" value="" />
 
             <input type="submit" value="OK"  onClick="givedata(event)"  name="submit" />
         </form>

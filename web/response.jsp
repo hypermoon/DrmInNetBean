@@ -96,13 +96,14 @@
       <jsp:useBean id="mybean" scope="page" class="org.mypackage.hello.datatimes" />     <%--  set scope to page to avoid bean restore bug --%>
     
         <jsp:setProperty name="mybean" property="strfoo" />
-        <h1>drm1,<jsp:getProperty name="mybean" property="strfoo" /> !</h1>
+        <h1>Date:<jsp:getProperty name="mybean" property="strfoo" /> !</h1>
      
         <button type="submit" id="subbutton" onClick= "gobacks()" >Goback</button>
+       
         <jsp:setProperty name="mybean" property="drmpeople0" />
         <h1>drm2,<jsp:getProperty name="mybean" property="drmpeople0" /> !</h1>
         
-        <button type="submit" id="delbuttion" onClick= "deleterec()" >Del</button>
+   
         <jsp:setProperty name="mybean" property="drmpeople1" />
         <jsp:setProperty name="mybean" property="drmpeople2" />
         
@@ -149,29 +150,31 @@
                
                out.println("-----");
                out.println(strdata);
-         %>
-         <%  if( validinput == null || validinput.equals("") )  //empty string
-            {
+               
+              if( validinput == null || validinput.equals("") )  //empty string
+              {
                strdata ="empty";
-            }
-        
-        %>
+              }
+         %>
+
         
          <mywritefile:MyWriteTag dir="<%=Dir%>" fname="<%=FName%>" con="<%=strdata%>" />
         
         <jsp:setProperty name="mybean" property="daynum" />
          
          <h1>yeap,<jsp:getProperty name="mybean" property="daynum" /> !</h1> 
-         <h1>oops,<%=mydd%> !</h1> 
+       
+
 
     
-         <h1>oops2,<%   org.mypackage.hello.datatimes myob = new org.mypackage.hello.datatimes() ;
+         <h1>oops2, netbean output:
+                      <%   org.mypackage.hello.datatimes myob = new org.mypackage.hello.datatimes() ;
                         myob.setDaynum(17);
                         mydd = myob.getDaynum();
                         out.println(mydd);
                         
                         request.setAttribute("test", mybean.getDaynum() );
-                    %> !
+                       %> !
                     
                <input type="hidden" id="bb" value="ggs" >
 
@@ -184,7 +187,9 @@
                      %>
          <myreadfile:MyReadTag fdir="<%=filePath%>"  fname="<%=fileName%>" />
          
-         <%="demo"%>;
+         <hr/>
+         <br/>
+         <%="Out put End token"%>;
          <br/>
          <%! String items; %>
          
@@ -194,39 +199,22 @@
           
           <% String []itemstimes =(String[])request.getAttribute("resultnewtimes");  %>
         
-         <%-- <c:out value="${items}" escapeXml="false" ></c:out>     --%>
-         <%-- <%=items[0] %>
-         <br/>
-         <%=items[1] %>
-         <br/>
-         <%=items[2] %>
-         <br/>
-         <%=items[3] %>
-         <br/>
-            
-         <%=itemstimes[0] %>
-         <br/>
-         <%=itemstimes[1] %>
-         <br/>
-         <%=itemstimes[2] %>
-         <br/>
-         --%>
+
            
         
         <script>
             var yearsize =  "<%= items.length   %>";
-            
             var limaarr = new Array(yearsize);
             var libaarr = new Array(yearsize);
-             var liwoarr = new Array(yearsize);
-              var lijunarr = new Array(yearsize);
+            var liwoarr = new Array(yearsize);
+            var lijunarr = new Array(yearsize);
               
-               var lihaoarr = new Array(yearsize);
+            var lihaoarr = new Array(yearsize);
                
-                var lilparr = new Array(yearsize);
-                 var litxarr = new Array(yearsize);
-                  var litsarr = new Array(yearsize);
-                   var limsarr = new Array(yearsize);
+            var lilparr = new Array(yearsize);
+            var litxarr = new Array(yearsize);
+            var litsarr = new Array(yearsize);
+            var limsarr = new Array(yearsize);
               
             var yeararr =  new Array(yearsize);
            
