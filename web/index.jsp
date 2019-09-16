@@ -18,8 +18,8 @@
     <body>  
 
         
-           <script type="text/javascript">
-            //script to performace user action
+           <script type="text/javascript">   <!-- script start , script to performace user action -->
+            
             function handlerchangeday(e)
             {
                var subs = document.getElementById("sub");
@@ -91,7 +91,7 @@
                 this.disabled = true;
             }
             
-            </script>
+            </script>  <!-- script end -->
             
 
    
@@ -116,39 +116,28 @@
           <input type="checkbox" name="isDeletefile" value="false">  Delete This File Record
           <hr/>
           <br/>
-        </td>
+         </td>
             Selected Date:
             <input type="text" name="strfoo" id="dadn"   value="" />
             <br/>
             <br/>
              <ol type="I">
-                 <li ><input type="text" name="drmpeople0" id="lima" value=<%=drmpeople[0] %> /></li>
-                 <li ><input type="text" name="drmpeople1" id="liba" value=<%=drmpeople[1] %> /></li>
-                 <li ><input type="text" name="drmpeople2" id="liwo" value=<%=drmpeople[2] %> /></li>
-                 <li ><input type="text" name="drmpeople3" id="lijun" value=<%=drmpeople[3] %> /></li>
-                 <li ><input type="text" name="drmpeople4" id="lihao" value=<%=drmpeople[4] %> /></li>
-                 <li ><input type="text" name="drmpeople5" id="lilp" value=<%=drmpeople[5] %> /></li>
-                 <li ><input type="text" name="drmpeople6" id="litx" value=<%=drmpeople[6] %> /></li>
-                 <li ><input type="text" name="drmpeople7" id="lits" value=<%=drmpeople[7] %> /></li>
-                 <li ><input type="text" name="drmpeople8" id="lims" value=<%=drmpeople[8] %> /></li>
+                 <li ><input type="text" name="drmpeople0" id="lima" value=<%=drmpeople[0] %> /> &nbsp&nbsp <button type="button" id="ma" onClick="confirmma()" >   Ma </button></li>
+                 <li ><input type="text" name="drmpeople1" id="liba" value=<%=drmpeople[1] %> /> &nbsp&nbsp <button type="button" id="ba" onClick="confirmba()" >   Ba </button></li>
+                 <li ><input type="text" name="drmpeople2" id="liwo" value=<%=drmpeople[2] %> /> &nbsp&nbsp <button type="button" id="wo" onClick="confirmwo()" > Wo </button></li>
+                 <li ><input type="text" name="drmpeople3" id="lijun" value=<%=drmpeople[3] %> /> &nbsp&nbsp <button type="button" id="jun" onClick="confirmjun()" > Jun </button></li>
+                 <li ><input type="text" name="drmpeople4" id="lihao" value=<%=drmpeople[4] %> /> &nbsp&nbsp <button type="button" id="hao" onClick="confirmhao()" > Hao </button></li>
+                 <li ><input type="text" name="drmpeople5" id="lilp" value=<%=drmpeople[5] %> /> &nbsp&nbsp <button type="button" id="lp" onClick="confirmlp()" > LP </button></li>
+                 <li ><input type="text" name="drmpeople6" id="litx" value=<%=drmpeople[6] %> /> &nbsp&nbsp <button type="button" id="tx" onClick="confirmtx()" > TX </button></li>
+                 <li ><input type="text" name="drmpeople7" id="lits" value=<%=drmpeople[7] %> /> &nbsp&nbsp <button type="button" id="ts" onClick="confirmts()" > TS </button></li>
+                 <li ><input type="text" name="drmpeople8" id="lims" value=<%=drmpeople[8] %> /> &nbsp&nbsp <button type="button" id="ms" onClick="confirmms()" > MS </button></li>
 
              </ol>
-             
-                <button type="button" id="ma" onClick="confirmma()" > Ma </button>
-                <button type="button" id="ba" onClick="confirmba()" > Ba </button>
-                <button type="button" id="wo" onClick="confirmwo()" > Wo </button>
-                <button type="button" id="jun" onClick="confirmjun()" > Jun </button>
-                <button type="button" id="hao" onClick="confirmhao()" > Hao </button>
-                <button type="button" id="lp" onClick="confirmlp()" > LP </button>
-                <button type="button" id="tx" onClick="confirmtx()" > TX </button>
-                <button type="button" id="ts" onClick="confirmts()" > TS </button>
-                <button type="button" id="ms" onClick="confirmms()" > MS </button>
             <br/>
             <br/>
             Enter your gender:
             
             <input type="text" name="daynum"  id ="dn" value="" />
-
             <input type="submit" value="OK"  onClick="givedata(event)"  name="submit" />
         </form>
 

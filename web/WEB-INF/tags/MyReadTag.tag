@@ -40,7 +40,7 @@
                          
                           listtimes.add(lntime.toString());
                          
-                           list.add(stryear[0].toString());
+                          list.add(stryear[0].toString());
                           
             }
                bufferin.close();
