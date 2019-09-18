@@ -46,18 +46,15 @@
 
             String FName ="drmdata1.txt";
             String Con = "this is a drm analysis txt \r\n";
+            
+            String fpname; 
+            fpname = Dir + FName;
+            File f = new File(fpname);
 
+            boolean  flagok = false;
+            boolean  delflag ;
 
-
-
-             String fpname; 
-             fpname = Dir + FName;
-             File f = new File(fpname);
-
-             boolean  flagok = false;
-             boolean  delflag ;
-
-             String[] chk = request.getParameterValues("isDeletefile");
+            String[] chk = request.getParameterValues("isDeletefile");
 
              if(chk != null)
              {
@@ -89,29 +86,31 @@
         
         
        
-     <div id="container" style="min-width:400px;height:400px"></div>
+        <div id="container" style="min-width:400px;height:400px"></div>
         
-      <%! int mydd =321; String strdata; String validinput; int isvalid =1; %>
-      <jsp:useBean id="mybean" scope="page" class="org.mypackage.hello.datatimes" />     <%--  set scope to page to avoid bean restore bug --%>
+        <button type="submit" id="subbutton" onClick= "gobacks()" >Goback</button>              <%--               --%> 
+        
+        <%! int mydd =321; String strdata; String validinput; int isvalid =1; %>
+      
+        <%--    start use javabean   --%>
+        <jsp:useBean id="mybean" scope="page" class="org.mypackage.hello.datatimes" />     <%--  set scope to page to avoid bean restore bug --%>
     
-        <jsp:setProperty name="mybean" property="strfoo" />
-        <h1>Date:<jsp:getProperty name="mybean" property="strfoo" /> !</h1>
+        <jsp:setProperty name="mybean" property="strfoo" />                                <%--  set javabean before use            --%> 
+        <h1>Date:<jsp:getProperty name="mybean" property="strfoo" /> !</h1>                <%--  get javabean property              --%> 
      
-        <button type="submit" id="subbutton" onClick= "gobacks()" >Goback</button>
-       
-        <h1>drm2,<jsp:getProperty name="mybean" property="drmpeople0" /> !</h1>
+          <%--  <h1>drm2,<jsp:getProperty name="mybean" property="drmpeople0" /> !</h1>                                              --%> 
               
-        <jsp:setProperty name="mybean" property="drmpeople0" />
-        <jsp:setProperty name="mybean" property="drmpeople1" />
-        <jsp:setProperty name="mybean" property="drmpeople2" />
+        <jsp:setProperty name="mybean" property="drmpeople0" />                             <%-- set javabean drmpeople0              --%> 
+        <jsp:setProperty name="mybean" property="drmpeople1" />                             <%-- set javabean drmpeople1               --%> 
+        <jsp:setProperty name="mybean" property="drmpeople2" />                             <%-- set javabean drmpeople2               --%> 
         
-        <jsp:setProperty name="mybean" property="drmpeople3" />
-        <jsp:setProperty name="mybean" property="drmpeople4" />
-        <jsp:setProperty name="mybean" property="drmpeople5" />
+        <jsp:setProperty name="mybean" property="drmpeople3" />                             <%-- set javabean drmpeople3               --%> 
+        <jsp:setProperty name="mybean" property="drmpeople4" />                             <%-- set javabean drmpeople4               --%> 
+        <jsp:setProperty name="mybean" property="drmpeople5" />                             <%-- set javabean drmpeople5               --%> 
         
-        <jsp:setProperty name="mybean" property="drmpeople6" />
-        <jsp:setProperty name="mybean" property="drmpeople7" />
-        <jsp:setProperty name="mybean" property="drmpeople8" />
+        <jsp:setProperty name="mybean" property="drmpeople6" />                             <%-- set javabean drmpeople6               --%> 
+        <jsp:setProperty name="mybean" property="drmpeople7" />                             <%-- set javabean drmpeople7               --%> 
+        <jsp:setProperty name="mybean" property="drmpeople8" />                             <%-- set javabean drmpeople8               --%> 
 
         <%
 
@@ -173,7 +172,7 @@
          <h1>yeap,<jsp:getProperty name="mybean" property="daynum" /> !</h1> 
        
 
-         <h1>oops2, netbean output:
+        <h1>oops2, netbean output:
                       <%   org.mypackage.hello.datatimes myob = new org.mypackage.hello.datatimes() ;
                         myob.setDaynum(17);
                         mydd = myob.getDaynum();
@@ -182,9 +181,9 @@
                         request.setAttribute("test", mybean.getDaynum() );
                        %> !
                     
-               <input type="hidden" id="bb" value="ggs" >
+        <input type="hidden" id="bb" value="ggs" >
 
-          </h1>
+        </h1>
                     
                     <%
                         //String filePath="D:\\";
@@ -222,7 +221,6 @@
               
             var yeararr =  new Array(yearsize);
             
-            
             var all_lima=0;
             var all_liba=0;
             var all_liwo=0;
@@ -249,8 +247,7 @@
                    limsarr[<%= i%>] = "<%= itemstimes[i].substring(16,17) %>";
                    
                    yeararr[<%= i%>] = "<%= items[i]%>";
-                   
-                   
+                                      
                    if(parseInt(limaarr[<%= i%>])=== 1)
                       all_lima++;
                    if(parseInt(libaarr[<%= i%>])=== 1)
@@ -280,6 +277,28 @@
             var nums=  document.getElementById("bb").value;   
             var tbs = <%=mybean.getDrmpeople0()%>;
             var serverinfo = <%=request.getAttribute("test")%>;
+            
+                            all_pep = all_lima + all_liba + all_liwo + all_lijun + all_lihao + all_lilp + all_litx + all_lits +all_lims;
+                
+                var  ma_pep  =   all_lima/all_pep;
+                var  ba_pep  =   all_liba/all_pep;
+                var  wo_pep  =   all_liwo/all_pep;
+                var  jun_pep =   all_lijun/all_pep;
+                var  hao_pep =   all_lihao/all_pep;
+                var  lp_pep  =   all_lilp/all_pep;
+                var  tx_pep  =   all_litx/all_pep;
+                var  ts_pep  =   all_lits/all_pep;
+                var  ms_pep  =   all_lims/all_pep;
+                
+                 ma_pep.toFixed(2);
+                 ba_pep.toFixed(2);
+                 wo_pep.toFixed(2);
+                 jun_pep.toFixed(2);
+                 hao_pep.toFixed(2);
+                 lp_pep.toFixed(2);
+                 tx_pep.toFixed(2);
+                 ts_pep.toFixed(2);
+                 ms_pep.toFixed(2);
 
             var chart = Highcharts.chart('container',{
             chart: {
@@ -319,7 +338,7 @@
                     borderWidth: 0
                 }
             },
-            series: [{
+            series: [{                                                                           //This is column view
                 name: 'lima',
                 data: [parseInt(limaarr[0])*50, parseInt(limaarr[1])*50, parseInt(limaarr[2])*50, parseInt(limaarr[3])*50,
                        parseInt(limaarr[4])*50,parseInt(limaarr[5])*50, parseInt(limaarr[6])*50,  parseInt(limaarr[7])*50,
@@ -391,41 +410,60 @@
                        parseInt(limsarr[12])*50, parseInt(limsarr[13])*50, parseInt(limsarr[14])*50,parseInt(limsarr[15])*50,
                        parseInt(limsarr[16])*50, parseInt(limsarr[17])*50, parseInt(limsarr[18])*50,parseInt(limsarr[19])*50,
                        parseInt(limsarr[20])*50, parseInt(limsarr[21])*50, parseInt(limsarr[22])*50,parseInt(limsarr[23])*50]
-            }
-                 ]
+            },
+            {
+                        plotBackgroundColor: null,
+                        plotBorderWidth: null,
+                        plotShadow: false,
+                                                        allowPointSelect: true,
+                                cursor: 'pointer',
+                        type:'pie',                                                   //This is pie view
+                        name: 'Brands',
+                        colorByPoint: true,
+                        data: [{
+                                name: 'Chrome',
+                                y:   ma_pep,
+                                sliced: true,
+                                selected: true
+                        }, {
+                                name: 'Internet Explorer',
+                                y: ba_pep
+                        }, {
+                                name: 'Firefox',
+                                y:  wo_pep
+                        }, {
+                                name: 'Edge',
+                                y:  jun_pep
+                        }, {
+                                name: 'Safari',
+                                y:  hao_pep
+                        }, {
+                                name: 'Sogou Explorer',
+                                y:  lp_pep
+                        }, {
+                                name: 'Opera',
+                                y:   tx_pep
+                        }, {
+                                name: 'QQ',
+                                y:   ts_pep
+                        }, {
+                                name: 'Other',
+                                y:  ms_pep
+                        }],
+                        center: [1300, 15],
+                        size:100
+                }
+                 
+        
+        
+        
+        
+        ]
         });
         
 
-            
         
-                all_pep = all_lima + all_liba + all_liwo + all_lijun + all_lihao + all_lilp + all_litx + all_lits +all_lims;
-                
-                var  ma_pep  =  all_lima/all_pep;
-                var  ba_pep  = all_liba/all_pep;
-                var  wo_pep  = all_liwo/all_pep;
-                var  jun_pep = all_lijun/all_pep;
-                var  hao_pep = all_lihao/all_pep;
-                var  lp_pep  = all_lilp/all_pep;
-                var  tx_pep  = all_litx/all_pep;
-                var  ts_pep  = all_lits/all_pep;
-                var  ms_pep  = all_lims/all_pep;
-                
-                 ma_pep.toFixed(2);
-                 ba_pep.toFixed(2);
-                 wo_pep.toFixed(2);
-                 jun_pep.toFixed(2);
-                 hao_pep.toFixed(2);
-                 lp_pep.toFixed(2);
-                 tx_pep.toFixed(2);
-                 ts_pep.toFixed(2);
-                 ms_pep.toFixed(2);
-                 
-                 
-                 //ma_pep.toPrecision(2);
-      
-                 //alert(ff.toFixed(2));
-        
-                Highcharts.chart('container', {
+             /*   Highcharts.chart('container1', {
                 chart: {
                         plotBackgroundColor: null,
                         plotBorderWidth: null,
@@ -486,7 +524,7 @@
                         }]
                 }]
         });
-        
+         */
         
                         function gobacks()
                        {

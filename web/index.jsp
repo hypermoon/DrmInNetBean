@@ -118,7 +118,8 @@
           <br/>
          </td>
             Selected Date:
-            <input type="text" name="strfoo" id="dadn"   value="" />
+            <input type="text" name="strfoo" id="dadn"   value="" /> 
+            
             <br/>
             <br/>
              <ol type="I">
