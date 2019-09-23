@@ -31,8 +31,8 @@
 
     <body>
         <%
-            String Dir;
-            int islinux = 0;
+                String Dir;
+                int islinux = 0;
                 if(System.getProperty("os.name").toLowerCase().indexOf("linux") >=0  )
                 {
                         islinux = 1;
@@ -40,7 +40,7 @@
                 }else
                 {
                         islinux = 0;
-                        Dir = "D:\\";
+                        Dir = "D:\\drm";
                 }
 
 

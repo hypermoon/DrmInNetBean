@@ -6,7 +6,7 @@
     Created on : 2017-11-28, 16:57:19
     Author     : dahua
 --%>
-
+<%@page import="java.io.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="./css/style.css" type="text/css">
 <!DOCTYPE html>
@@ -15,92 +15,149 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page  </title>
     </head>
-    <body>  
+    <body  onload="padd()" >  
 
+               <%
+                String Dir;
+                int islinux = 0;
+                if(System.getProperty("os.name").toLowerCase().indexOf("linux") >=0  )
+                {
+                        islinux = 1;
+                        Dir = "/usr/local/ansonfd/";
+                }else
+                {
+                        islinux = 0;
+                        Dir = "D:\\drm";
+                }
+
+                 File file = new File(Dir);
+                 File[] drmfilearray = file.listFiles();
+                 
+                 
+                 for(int i = 0; i < drmfilearray.length; i++)
+                 {
+                     if(drmfilearray[i].isFile()){
+                         System.out.println(" ----              ---  " );
+                         System.out.println("^^^^" + drmfilearray[i].getName());
+                     }
+                 }
+                        
+                        
+                %>
         
-           <script type="text/javascript">   <!-- script start , script to performace user action -->
-            
-            function handlerchangeday(e)
-            {
-               var subs = document.getElementById("sub");
-               var times = document.getElementById("dadn");
-               var daynums = document.getElementById("cal").value;
-               times.value = daynums;     
-               
-               document.getElementById("lima").value = 0;
-               document.getElementById("liba").value = 0;
-               document.getElementById("liwo").value = 0;
-               document.getElementById("lijun").value = 0;
-               document.getElementById("lihao").value = 0;
-               document.getElementById("lilp").value = 0;
-               document.getElementById("litx").value = 0;
-               document.getElementById("lits").value = 0;
-               document.getElementById("lims").value = 0;
-                  
-            }
+           <script type="text/javascript">  // <!-- script start , script to performace user action -->
+                var myfilename = new Array();
+                
+                <% for(int k =0; k < drmfilearray.length; k ++){  %>
+                myfilename[<%=k%>] = "<%=drmfilearray[k].getName()%>";
 
-            function givedata(e)
-            {
-               //    var times = document.getElementById("dadn").value;
-            }
+                <% } %>
             
+                function handlerchangeday(e)
+                {
+                   var subs = document.getElementById("sub");
+                   var times = document.getElementById("dadn");
+                   var daynums = document.getElementById("cal").value;
+                   times.value = daynums;     
+
+                   document.getElementById("lima").value = 0;
+                   document.getElementById("liba").value = 0;
+                   document.getElementById("liwo").value = 0;
+                   document.getElementById("lijun").value = 0;
+                   document.getElementById("lihao").value = 0;
+                   document.getElementById("lilp").value = 0;
+                   document.getElementById("litx").value = 0;
+                   document.getElementById("lits").value = 0;
+                   document.getElementById("lims").value = 0;
+
+                }
+
+                function givedata(e)
+                {
+                   //var times = document.getElementById("dadn").value;
+                }
+
+                function confirmma()
+                {
+                   document.getElementById("lima").value = 1;
+                   this.disabled = true;
+                }
+                function confirmba()
+                {
+                    document.getElementById("liba").value = 1;
+                    this.disabled = true;
+                }
+                function confirmwo()
+                {
+                    document.getElementById("liwo").value = 1;
+                    this.disabled = true;
+                }
+                function confirmjun()
+                {
+                    document.getElementById("lijun").value = 1;
+                    this.disabled = true;
+                }
+                function confirmhao()
+                {
+                    document.getElementById("lihao").value = 1;
+                    this.disabled = true;
+                }
+                function confirmlp()
+                {
+                    document.getElementById("lilp").value = 1;
+                    this.disabled = true;
+                }
+                function confirmtx()
+                {
+                    document.getElementById("litx").value = 1;
+                    this.disabled = true;
+                }
+                function confirmts()
+                {
+                    document.getElementById("lits").value = 1;
+                    this.disabled = true;
+                }
+                function confirmms()
+                {
+                    document.getElementById("lims").value = 1;
+                    this.disabled = true;
+                }
             
-            function confirmma()
-            {
-               document.getElementById("lima").value = 1;
-               this.disabled = true;
-            }
-            function confirmba()
-            {
-                document.getElementById("liba").value = 1;
-                this.disabled = true;
-            }
-            function confirmwo()
-            {
-                document.getElementById("liwo").value = 1;
-                this.disabled = true;
-            }
-            function confirmjun()
-            {
-                document.getElementById("lijun").value = 1;
-                this.disabled = true;
-            }
-            function confirmhao()
-            {
-                document.getElementById("lihao").value = 1;
-                this.disabled = true;
-            }
-            function confirmlp()
-            {
-                document.getElementById("lilp").value = 1;
-                this.disabled = true;
-            }
-            function confirmtx()
-            {
-                document.getElementById("litx").value = 1;
-                this.disabled = true;
-            }
-            function confirmts()
-            {
-                document.getElementById("lits").value = 1;
-                this.disabled = true;
-            }
-            function confirmms()
-            {
-                document.getElementById("lims").value = 1;
-                this.disabled = true;
-            }
+                function padd(){
+                  
+                   var selectdom = document.getElementById("selectid");
+                   var objoption = document.createElement("option");
+                   var len = selectdom.length;
+                
+                   for(var i = len; i >0; i--){ 
+                       selectdom.options[i-1]  = null;
+                   }
+                   
+                   for(var x =0 ;x < myfilename.length; x++ )
+                   {                       
+                      document.getElementById("selectid").options.add(new Option(myfilename[x], x));
+                   }
+               }
+
             
             </script>  <!-- script end -->
             
 
    
         <h1>DRM Count!</h1>
-        <span>日期：</span><input type="date" id="cal" name="caldate"    onchange="handlerchangeday(event);"  max="2029-12-11" min="2010-01-01" style="width:331px"/>
+        <span>日期：</span><input type="date" id="cal" name="caldate"  onchange="handlerchangeday(event);"  max="2029-12-11" min="2010-01-01" style="width:331px"/>
         <br/>
         <br/>
+                    
+ 
+                
         <button type="submit" id="subbutton" onClick="this.disabled = true;"    >Confirm_Date</button>
-        
+        &nbsp&nbsp
+        <select id="selectid" style="width:120px;"  >
+         
+
+        </select>
+            
          
          
         <%!
