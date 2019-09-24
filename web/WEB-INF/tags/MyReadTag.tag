@@ -30,7 +30,8 @@
            String[] stryear;
            while((temp=bufferin.readLine())!=null)
            {
-                          
+                        if(temp.length()>4)
+                       {
                           str.append(temp);
                           str.append("<br>");
 
@@ -41,6 +42,7 @@
                           listtimes.add(lntime.toString());
                          
                           list.add(stryear[0].toString());
+                       }
                           
             }
                bufferin.close();

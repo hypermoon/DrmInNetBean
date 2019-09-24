@@ -40,11 +40,13 @@
                 }else
                 {
                         islinux = 0;
-                        Dir = "D:\\drm";
+                        Dir = "D:\\drm\\";
                 }
 
 
-            String FName ="drmdata1.txt";
+            String  mySelectFName = (String)request.getParameter("drmfiles") ;  
+                
+            String FName = mySelectFName;
             String Con = "this is a drm analysis txt \r\n";
             
             String fpname; 
@@ -188,7 +190,7 @@
                     <%
                         //String filePath="D:\\";
                         String filePath=   Dir;        //".\\";
-                        String fileName="drmdata1.txt";
+                        String fileName = mySelectFName;
                      %>
          <myreadfile:MyReadTag fdir="<%=filePath%>"  fname="<%=fileName%>" />
          
@@ -203,6 +205,10 @@
           <% String []items =(String[])request.getAttribute("resultnew");   %>
           
           <% String []itemstimes =(String[])request.getAttribute("resultnewtimes");  %>
+          
+          
+             
+         
         
 
         <script>

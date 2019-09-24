@@ -33,12 +33,17 @@
                  File file = new File(Dir);
                  File[] drmfilearray = file.listFiles();
                  
+                 String[] fileslist = new String[drmfilearray.length];
+                 
+                 int bb =0 ;
+                 bb= drmfilearray.length;
                  
                  for(int i = 0; i < drmfilearray.length; i++)
                  {
                      if(drmfilearray[i].isFile()){
                          System.out.println(" ----              ---  " );
                          System.out.println("^^^^" + drmfilearray[i].getName());
+                         fileslist[i] = drmfilearray[i].getName();
                      }
                  }
                         
@@ -48,9 +53,11 @@
            <script type="text/javascript">  // <!-- script start , script to performace user action -->
                 var myfilename = new Array();
                 
-                <% for(int k =0; k < drmfilearray.length; k ++){  %>
-                myfilename[<%=k%>] = "<%=drmfilearray[k].getName()%>";
-
+                <% for(int k =0; k < fileslist.length; k ++){  %>
+                        if("<%=fileslist[k]%>" !== null )
+                        {
+                            myfilename[<%=k%>] = "<%=fileslist[k]%>";
+                        }
                 <% } %>
             
                 function handlerchangeday(e)
@@ -71,7 +78,17 @@
                    document.getElementById("lims").value = 0;
 
                 }
-
+                function handlerselected(e)
+                {
+                   var selectdom = document.getElementById("selectid");
+                   var index = selectdom.selectedIndex;
+                  // alert(index);
+                   var selinput = document.getElementById("drmselfile");
+                   
+                   selinput.value = selectdom.options[index].text;
+                   
+                   //alert(selectdom.options[index].text);
+                }
                 function givedata(e)
                 {
                    //var times = document.getElementById("dadn").value;
@@ -127,6 +144,10 @@
                   
                    var selectdom = document.getElementById("selectid");
                    var objoption = document.createElement("option");
+                 
+                  var selfiledoms = document.getElementById("drmselfile");
+
+                   
                    var len = selectdom.length;
                 
                    for(var i = len; i >0; i--){ 
@@ -137,6 +158,9 @@
                    {                       
                       document.getElementById("selectid").options.add(new Option(myfilename[x], x));
                    }
+                   
+                                 
+                   selfiledoms.value = selectdom.options[0].text;
                }
 
             
@@ -153,7 +177,7 @@
                 
         <button type="submit" id="subbutton" onClick="this.disabled = true;"    >Confirm_Date</button>
         &nbsp&nbsp
-        <select id="selectid" style="width:120px;"  >
+        <select id="selectid"  onchange="handlerselected(event)"  style="width:120px;"  >
          
 
         </select>
@@ -176,7 +200,9 @@
          </td>
             Selected Date:
             <input type="text" name="strfoo" id="dadn"   value="" /> 
-            
+            &nbsp&nbsp
+            Selected File:
+            <input type="text" name="drmfiles" id="drmselfile"   value= ""   /> 
             <br/>
             <br/>
              <ol type="I">
