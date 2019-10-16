@@ -53,12 +53,12 @@
            <script type="text/javascript">  // <!-- script start , script to performace user action -->
                 var myfilename = new Array();
                 
-                <% for(int k =0; k < fileslist.length; k ++){  %>
+               <%  for(int k =0; k < fileslist.length; k ++){  %>
                         if("<%=fileslist[k]%>" !== null )
                         {
                             myfilename[<%=k%>] = "<%=fileslist[k]%>";
                         }
-                <% } %>
+               <%   } %>
             
                 function handlerchangeday(e)
                 {
@@ -78,16 +78,29 @@
                    document.getElementById("lims").value = 0;
 
                 }
+                function addfile()
+                {
+                    var len;
+                    len = myfilename.length;
+                    len = len+1;
+                    var newname = "drmdata" + len + ".txt";
+                    
+                    var selinput = document.getElementById("drmselfile");
+                    selinput.value = newname;
+                    
+                   // var selectdom = document.getElementById("selectid");
+                   // selectdom.value = newname;
+
+                }
                 function handlerselected(e)
                 {
                    var selectdom = document.getElementById("selectid");
                    var index = selectdom.selectedIndex;
-                  // alert(index);
+
                    var selinput = document.getElementById("drmselfile");
                    
                    selinput.value = selectdom.options[index].text;
-                   
-                   //alert(selectdom.options[index].text);
+
                 }
                 function givedata(e)
                 {
@@ -166,21 +179,16 @@
             
             </script>  <!-- script end -->
             
-
-   
         <h1>DRM Count!</h1>
         <span>日期：</span><input type="date" id="cal" name="caldate"  onchange="handlerchangeday(event);"  max="2029-12-11" min="2010-01-01" style="width:331px"/>
         <br/>
         <br/>
-                    
- 
-                
-        <button type="submit" id="subbutton" onClick="this.disabled = true;"    >Confirm_Date</button>
+                      
+        <button type="submit" id="subbutton"  disabled="disabled" onClick="this.disabled = true;"    >Confirm_Date</button>
         &nbsp&nbsp
         <select id="selectid"  onchange="handlerselected(event)"  style="width:120px;"  >
          
-
-        </select>
+        </select>&nbsp<button type="button" id="fileadd" onClick="addfile()"    >+</button>
             
          
          

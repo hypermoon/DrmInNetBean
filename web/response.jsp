@@ -44,7 +44,7 @@
                 }
 
 
-            String  mySelectFName = (String)request.getParameter("drmfiles") ;  
+            String  mySelectFName = (String)request.getParameter("drmfiles") ;     //use getParameter to get input text values
                 
             String FName = mySelectFName;
             String Con = "this is a drm analysis txt \r\n";
@@ -56,7 +56,7 @@
             boolean  flagok = false;
             boolean  delflag ;
 
-            String[] chk = request.getParameterValues("isDeletefile");
+            String[] chk = request.getParameterValues("isDeletefile");               //use getParameterValues to get checkbox list values
 
              if(chk != null)
              {
@@ -95,24 +95,24 @@
         <%! int mydd =321; String strdata; String validinput; int isvalid =1; %>
       
         <%--    start use javabean   --%>
-        <jsp:useBean id="mybean" scope="page" class="org.mypackage.hello.datatimes" />     <%--  set scope to page to avoid bean restore bug --%>
+        <jsp:useBean id="mybean" scope="page" class="org.mypackage.hello.datatimes" />      <%--  set scope to page to avoid bean restore bug  --%>
     
-        <jsp:setProperty name="mybean" property="strfoo" />                                <%--  set javabean before use            --%> 
-        <h1>Date:<jsp:getProperty name="mybean" property="strfoo" /> !</h1>                <%--  get javabean property              --%> 
+        <jsp:setProperty name="mybean" property="strfoo" />                                 <%--  set javabean before use                      --%> 
+        <h1>Date:<jsp:getProperty name="mybean" property="strfoo" /> !</h1>                 <%--  get javabean property                        --%> 
      
-          <%--  <h1>drm2,<jsp:getProperty name="mybean" property="drmpeople0" /> !</h1>                                              --%> 
+          <%--  <h1>drm2,<jsp:getProperty name="mybean" property="drmpeople0" /> !</h1>                                                 --%> 
               
-        <jsp:setProperty name="mybean" property="drmpeople0" />                             <%-- set javabean drmpeople0              --%> 
-        <jsp:setProperty name="mybean" property="drmpeople1" />                             <%-- set javabean drmpeople1               --%> 
-        <jsp:setProperty name="mybean" property="drmpeople2" />                             <%-- set javabean drmpeople2               --%> 
+        <jsp:setProperty name="mybean" property="drmpeople0" />                             <%-- set javabean drmpeople0                       --%> 
+        <jsp:setProperty name="mybean" property="drmpeople1" />                             <%-- set javabean drmpeople1                       --%> 
+        <jsp:setProperty name="mybean" property="drmpeople2" />                             <%-- set javabean drmpeople2                       --%> 
         
-        <jsp:setProperty name="mybean" property="drmpeople3" />                             <%-- set javabean drmpeople3               --%> 
-        <jsp:setProperty name="mybean" property="drmpeople4" />                             <%-- set javabean drmpeople4               --%> 
-        <jsp:setProperty name="mybean" property="drmpeople5" />                             <%-- set javabean drmpeople5               --%> 
+        <jsp:setProperty name="mybean" property="drmpeople3" />                             <%-- set javabean drmpeople3                       --%> 
+        <jsp:setProperty name="mybean" property="drmpeople4" />                             <%-- set javabean drmpeople4                       --%> 
+        <jsp:setProperty name="mybean" property="drmpeople5" />                             <%-- set javabean drmpeople5                       --%> 
         
-        <jsp:setProperty name="mybean" property="drmpeople6" />                             <%-- set javabean drmpeople6               --%> 
-        <jsp:setProperty name="mybean" property="drmpeople7" />                             <%-- set javabean drmpeople7               --%> 
-        <jsp:setProperty name="mybean" property="drmpeople8" />                             <%-- set javabean drmpeople8               --%> 
+        <jsp:setProperty name="mybean" property="drmpeople6" />                             <%-- set javabean drmpeople6                       --%> 
+        <jsp:setProperty name="mybean" property="drmpeople7" />                             <%-- set javabean drmpeople7                       --%> 
+        <jsp:setProperty name="mybean" property="drmpeople8" />                             <%-- set javabean drmpeople8                       --%> 
 
         <%
 
@@ -167,7 +167,7 @@
          %>
 
         
-         <mywritefile:MyWriteTag dir="<%=Dir%>" fname="<%=FName%>" con="<%=strdata%>" />
+        <mywritefile:MyWriteTag dir="<%=Dir%>" fname="<%=FName%>" con="<%=strdata%>" />
         
         <jsp:setProperty name="mybean" property="daynum" />
          
@@ -188,8 +188,7 @@
         </h1>
                     
                     <%
-                        //String filePath="D:\\";
-                        String filePath=   Dir;        //".\\";
+                        String filePath=   Dir;       
                         String fileName = mySelectFName;
                      %>
          <myreadfile:MyReadTag fdir="<%=filePath%>"  fname="<%=fileName%>" />
@@ -206,10 +205,6 @@
           
           <% String []itemstimes =(String[])request.getAttribute("resultnewtimes");  %>
           
-          
-             
-         
-        
 
         <script>
             var yearsize =  "<%= items.length   %>";
@@ -314,7 +309,7 @@
                 text: 'Drm to every one'
             },
             subtitle: {
-                text: '数据来源: WorldClimate.com'
+                text:  'FileName: '  + "<%=mySelectFName %>"
             },
             xAxis: {
                 categories: [
@@ -427,36 +422,36 @@
                         name: 'Brands',
                         colorByPoint: true,
                         data: [{
-                                name: 'Chrome',
+                                name: 'ma',
                                 y:   ma_pep,
                                 sliced: true,
                                 selected: true
                         }, {
-                                name: 'Internet Explorer',
+                                name: 'ba',
                                 y: ba_pep
                         }, {
-                                name: 'Firefox',
+                                name: 'wo',
                                 y:  wo_pep
                         }, {
-                                name: 'Edge',
+                                name: 'jun',
                                 y:  jun_pep
                         }, {
-                                name: 'Safari',
+                                name: 'hao',
                                 y:  hao_pep
                         }, {
-                                name: 'Sogou Explorer',
+                                name: 'lp',
                                 y:  lp_pep
                         }, {
-                                name: 'Opera',
+                                name: 'tx',
                                 y:   tx_pep
                         }, {
-                                name: 'QQ',
+                                name: 'ts',
                                 y:   ts_pep
                         }, {
-                                name: 'Other',
+                                name: 'ms',
                                 y:  ms_pep
                         }],
-                        center: [1300, 15],
+                        center: [1300, 12],
                         size:100
                 }
                  
@@ -467,70 +462,6 @@
         ]
         });
         
-
-        
-             /*   Highcharts.chart('container1', {
-                chart: {
-                        plotBackgroundColor: null,
-                        plotBorderWidth: null,
-                        plotShadow: false,
-                        type: 'pie'
-                },
-                title: {
-                        text: '2018年1月浏览器市场份额'
-                },
-                tooltip: {
-                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-                },
-                plotOptions: {
-                        pie: {
-                                allowPointSelect: true,
-                                cursor: 'pointer',
-                                dataLabels: {
-                                        enabled: true,
-                                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                                        style: {
-                                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                                        }
-                                }
-                        }
-                },
-                series: [{
-                        name: 'Brands',
-                        colorByPoint: true,
-                        data: [{
-                                name: 'Chrome',
-                                y:   ma_pep,
-                                sliced: true,
-                                selected: true
-                        }, {
-                                name: 'Internet Explorer',
-                                y: ba_pep
-                        }, {
-                                name: 'Firefox',
-                                y:  wo_pep
-                        }, {
-                                name: 'Edge',
-                                y:  jun_pep
-                        }, {
-                                name: 'Safari',
-                                y:  hao_pep
-                        }, {
-                                name: 'Sogou Explorer',
-                                y:  lp_pep
-                        }, {
-                                name: 'Opera',
-                                y:   tx_pep
-                        }, {
-                                name: 'QQ',
-                                y:   ts_pep
-                        }, {
-                                name: 'Other',
-                                y:  ms_pep
-                        }]
-                }]
-        });
-         */
         
                         function gobacks()
                        {
