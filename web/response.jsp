@@ -40,7 +40,7 @@
                 }else
                 {
                         islinux = 0;
-                        Dir = "D:\\drm\\";
+                        Dir = "D:\\drm\\";         //path
                 }
 
 
